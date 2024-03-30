@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('birthday_background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            margin-top: 50px;
+            color: #a75656;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        #slideshow-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .slideshow-image {
+            display: none;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .slideshow-image.active {
+            display: block;
+            opacity: 1;
+        }
+        #prev, #next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #b46d6d;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            z-index: 1;
+            border: none;
+            border-radius: 50%;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+        #prev:hover, #next:hover {
+            background-color: rgba(170, 119, 119, 0.8);
+        }
+        #prev {
+            left: 20px;
+        }
+        #next {
+            right: 20px;
+        }
+        .balloon {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: url('bday.gif') no-repeat;
+            background-size: contain;
+            animation: fly 15s linear infinite;
+        }
+        @keyframes fly {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(360deg);
+            }
+        }
+        .balloon:nth-child(2n) {
+            animation-delay: 5s;
+        }
+        .balloon:nth-child(3n) {
+            animation-delay: 10s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Birthday, Jubaiyara!</h1>
+    <h2>You mean world to me! <br> You deserve all the happiness. <br> Stay Happy, Stay Safe. </h2>
+    <div id="slideshow-container">
+        <img class="slideshow-image active" src="j1.jpeg" alt="Birthday Image 1">
+        <img class="slideshow-image" src="j2.jpeg" alt="Birthday Image 2">
+        <img class="slideshow-image" src="j3.jpeg" alt="Birthday Image 2">
+        <img class="slideshow-image" src="j4.jpeg" alt="Birthday Image 2">
+        <img class="slideshow-image" src="j5.jpeg" alt="Birthday Image 2">
+        <img class="slideshow-image" src="j6.jpeg" alt="Birthday Image 2">
+        <!-- Add more images in the same manner -->
+    </div>
+    <button id="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button id="next" onclick="changeSlide(1)">&#10095;</button>
+
+    <!-- Flying balloons -->
+    <div class="balloon" style="left: 10%;"></div>
+    <div class="balloon" style="left: 20%;"></div>
+    <div class="balloon" style="left: 30%;"></div>
+    <div class="balloon" style="left: 40%;"></div>
+    <div class="balloon" style="left: 50%;"></div>
+    <div class="balloon" style="left: 60%;"></div>
+    <div class="balloon" style="left: 70%;"></div>
+    <div class="balloon" style="left: 80%;"></div>
+    <div class="balloon" style="left: 90%;"></div>
+
+    <script>
+        var slideIndex = 0;
+        showSlide(slideIndex);
+
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function showSlide(n) {
+            var slides = document.getElementsByClassName("slideshow-image");
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            slides[slideIndex].classList.add("active");
+        }
+    </script>
+</body>
+</html>
